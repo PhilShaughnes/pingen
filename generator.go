@@ -1,12 +1,16 @@
 package main
 
 import (
+	_ "embed"
 	"fmt"
 	"html/template"
 	"os"
 	"path/filepath"
 	"strings"
 )
+
+//go:embed templates/page.html
+var defaultTemplate string
 
 type Page struct {
 	Title    string
@@ -21,15 +25,23 @@ type PageData struct {
 	Pages   []Page
 }
 
-func generateSite(sourceDir, outDir string) error {
+func generateSite(sourceDir, outDir, templatePath string) error {
 	pages, err := collectPages(sourceDir)
 	if err != nil {
 		return fmt.Errorf("failed to collect pages: %w", err)
 	}
 
-	tmpl, err := template.ParseFiles("templates/page.html")
-	if err != nil {
-		return fmt.Errorf("failed to parse template: %w", err)
+	var tmpl *template.Template
+	if templatePath != "" {
+		tmpl, err = template.ParseFiles(templatePath)
+		if err != nil {
+			return fmt.Errorf("failed to parse custom template: %w", err)
+		}
+	} else {
+		tmpl, err = template.New("page").Parse(defaultTemplate)
+		if err != nil {
+			return fmt.Errorf("failed to parse embedded template: %w", err)
+		}
 	}
 
 	for _, page := range pages {

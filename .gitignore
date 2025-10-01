@@ -20,6 +20,7 @@
 # Go workspace file
 go.work
 
-# tests
+# project files
 test-content/
 test-output/
+pingen
