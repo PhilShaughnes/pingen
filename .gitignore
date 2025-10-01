@@ -19,3 +19,7 @@
 
 # Go workspace file
 go.work
+
+# tests
+test-content/
+test-output/
