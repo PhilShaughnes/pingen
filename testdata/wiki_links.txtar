@@ -1,0 +1,29 @@
+Test wiki link resolution across multiple interconnected pages.
+Verifies that [[Page Name]] syntax correctly converts to page-name.html links.
+
+-- source/home.md --
+# Home
+
+Welcome! Check out [[Tools]] and [[Resources]].
+
+-- source/tools.md --
+# Tools
+
+- [Go](https://golang.org) - Programming language
+- See [[Resources]] for more
+
+-- source/resources.md --
+# Resources
+
+Back to [[Home]]
+
+-- want/home.html --
+<a href="tools.html">Tools</a>
+<a href="resources.html">Resources</a>
+
+-- want/tools.html --
+<a href="https://golang.org">Go</a>
+<a href="resources.html">Resources</a>
+
+-- want/resources.html --
+<a href="home.html">Home</a>

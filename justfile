@@ -34,8 +34,17 @@ watch PATH:
 wtest PATH:
 	ls {{PATH}}/* | entr -c go test {{PATH}}/*.go
 
+# build for linux x86_64
+build-linux:
+	GOOS=linux GOARCH=amd64 go build -o pingen-linux .
+
+# deploy to wyse 3040
+deploy: build-linux
+	ssh dwys1.lan 'mkdir -p ~/.local/bin'
+	rsync -avz pingen-linux dwys1.lan:~/.local/bin/pingen
+
 # clean build artifacts and generated output
 clean:
-	rm -f pingen
+	rm -f pingen pingen-linux
 	rm -rf public/
 	rm -rf local/test-output/

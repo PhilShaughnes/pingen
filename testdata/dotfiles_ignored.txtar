@@ -1,0 +1,15 @@
+Test that dotfiles (files starting with .) are ignored during generation.
+Verifies that .hidden.md files are not processed into HTML output.
+
+-- source/visible.md --
+# Visible
+
+This should be generated.
+
+-- source/.hidden.md --
+# Hidden
+
+This should NOT be generated.
+
+-- want/visible.html --
+<h1>Visible</h1>

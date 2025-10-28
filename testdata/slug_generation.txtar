@@ -1,0 +1,18 @@
+Test slug generation for filenames with spaces and special characters.
+Verifies that "My Page Name.md" becomes "my-page-name.html" and wiki links resolve correctly.
+
+-- source/My Page Name.md --
+# My Page Name
+
+Content with [[Another Page]] link.
+
+-- source/Another Page.md --
+# Another Page
+
+Links back to [[My Page Name]].
+
+-- want/my-page-name.html --
+<a href="another-page.html">Another Page</a>
+
+-- want/another-page.html --
+<a href="my-page-name.html">My Page Name</a>
