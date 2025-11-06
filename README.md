@@ -1,4 +1,5 @@
 # Pingen
+ahoy!
 
 Simple static site generator for markdown-based bookmarks with wiki-style linking.
 
