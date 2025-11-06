@@ -4,6 +4,7 @@ ahoy!
 Simple static site generator for markdown-based bookmarks with wiki-style linking.
 
 ## Features
+another hello!
 
 - Convert markdown files to static HTML
 - Wiki-style internal links: `[[Page Name]]` → HTML links (compatible with marksman LSP)
