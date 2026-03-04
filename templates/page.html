@@ -1,129 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" data-theme="{{.Theme}}">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{.Title}}</title>
     <style>
-        /* --- Themes --- */
-        :root {
-            --bg:       #ffffff;
-            --text:     #333333;
-            --h2:       #2c3e50;
-            --h3:       #34495e;
-            --link:     #3498db;
-            --nav-bg:   #f8f9fa;
-            --surface:  #f4f4f4;
-            --border:   #e0e0e0;
-        }
-        [data-theme="simple"] {
-            --bg:       #ffffff;
-            --text:     #212121;
-            --h2:       #0d47a1;
-            --h3:       #1565c0;
-            --link:     #0d47a1;
-            --nav-bg:   #f5f7ff;
-            --surface:  #f5f7ff;
-            --border:   #898ea4;
-        }
-        [data-theme="warm"] {
-            --bg:       #faf7f2;
-            --text:     #3d2c1e;
-            --h2:       #7c4a1e;
-            --h3:       #9a6234;
-            --link:     #c0562a;
-            --nav-bg:   #f0e8db;
-            --surface:  #ede5d8;
-            --border:   #c9aa88;
-        }
-        [data-theme="dark"] {
-            --bg:       #0f0f0f;
-            --text:     #d0d0d0;
-            --h2:       #00e5a0;
-            --h3:       #00b8d4;
-            --link:     #ff6ac1;
-            --nav-bg:   #1a1a1a;
-            --surface:  #1a1a1a;
-            --border:   #2e2e2e;
-        }
+      /* ================================================================
+         ACTIVE PALETTES
+         To swap light: edit [data-theme="light"] + @media light block
+         To swap dark:  edit [data-theme="dark"]  + @media dark block
+         Palette library at bottom of this file
+         ================================================================ */
 
-        /* --- Base --- */
-        * { box-sizing: border-box; }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 90rem;
-            margin: 0 auto;
-            padding: 1.5rem 2.5rem;
-            color: var(--text);
-            background: var(--bg);
+      /* light: paper */
+      :root,
+      [data-theme="light"] {
+        --bg: #f8f6f1; --text: #4c432e; --h2: #4c432e; --h3: #7a6a4e;
+        --link: #aa9a73; --nav-bg: #ede9e0; --surface: #f0ede5; --border: #d8d0b8;
+      }
+      /* dark: charcoal */
+      [data-theme="dark"] {
+        --bg: #2c3545; --text: #e0e4ec; --h2: #d4a843; --h3: #8fa0b8;
+        --link: #9ccfd8; --nav-bg: #1e2535; --surface: #1e2535; --border: #3d4f65;
+      }
+      /* moon: rosé pine moon */
+      [data-theme="moon"] {
+        --bg: #232136; --text: #e0def4; --h2: #ea9a97; --h3: #908caa;
+        --link: #9ccfd8; --nav-bg: #2a273f; --surface: #393552; --border: #44415a;
+      }
+      /* dawn: rosé pine dawn */
+      [data-theme="dawn"] {
+        --bg: #faf4ed; --text: #575279; --h2: #b4637a; --h3: #797593;
+        --link: #286983; --nav-bg: #f2e9e1; --surface: #fffaf3; --border: #dfdad9;
+      }
+      /* auto: OS preference — mirrors light/dark palettes above */
+      @media (prefers-color-scheme: light) {
+        [data-theme="auto"] {
+          --bg: #f8f6f1; --text: #4c432e; --h2: #4c432e; --h3: #7a6a4e;
+          --link: #aa9a73; --nav-bg: #ede9e0; --surface: #f0ede5; --border: #d8d0b8;
         }
-        h1 { border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
-        h2 { margin-top: 2rem; color: var(--h2); }
-        h3 { color: var(--h3); }
-        a { color: var(--link); text-decoration: none; }
-        a:hover { text-decoration: underline; }
-        ul { list-style-type: disc; padding-left: 2rem; }
-        li { margin: 0.5rem 0; }
-        code {
-            background: var(--surface);
-            padding: 0.2rem 0.4rem;
-            border-radius: 3px;
-            font-size: 0.9em;
+      }
+      @media (prefers-color-scheme: dark) {
+        [data-theme="auto"] {
+          --bg: #2c3545; --text: #e0e4ec; --h2: #d4a843; --h3: #8fa0b8;
+          --link: #9ccfd8; --nav-bg: #1e2535; --surface: #1e2535; --border: #3d4f65;
         }
-        pre {
-            background: var(--surface);
-            padding: 1rem;
-            border-radius: 4px;
-            overflow-x: auto;
-        }
-        pre code { padding: 0; background: none; }
+      }
 
-        /* --- Nav --- */
-        nav {
-            margin-bottom: 2rem;
-            padding: 1rem;
-            background: var(--nav-bg);
-            border-radius: 4px;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        nav li { margin: 0; }
+      /* --- Base --- */
+      * { box-sizing: border-box; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        line-height: 1.6;
+        max-width: 90rem;
+        margin: 0 auto;
+        padding: 1.5rem 2.5rem;
+        color: var(--text);
+        background: var(--bg);
+      }
+      h1 { border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+      h2 { margin-top: 2rem; color: var(--h2); }
+      h3 { color: var(--h3); }
+      a { color: var(--link); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      ul { list-style-type: disc; padding-left: 2rem; }
+      li { margin: 0.5rem 0; }
+      code { background: var(--surface); padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.9em; }
+      pre { background: var(--surface); padding: 1rem; border-radius: 4px; overflow-x: auto; }
+      pre code { padding: 0; background: none; }
 
-        /* --- Section grid --- */
-        .sections {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 1.25rem;
-            align-items: start;
-        }
-        .sections > section {
-            border: 1px solid var(--border);
-            border-radius: 4px;
-            padding: 1rem 1.25rem;
-        }
-        .sections > section > h2:first-child { margin-top: 0; }
+      /* --- Nav --- */
+      nav {
+        margin-bottom: 2rem;
+        padding: 0.75rem 1rem;
+        background: var(--nav-bg);
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+      }
+      nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 1rem; flex: 1; }
+      nav li { margin: 0; }
+
+      /* --- Theme switcher --- */
+      /* If you swap light/dark palettes, update the circle bg colors below too */
+      .theme-switcher { margin-left: auto; flex-shrink: 0; display: flex; gap: 0.4rem; align-items: center; }
+      .theme-switcher button {
+        width: 13px; height: 13px; border-radius: 50%;
+        padding: 0; border: none; cursor: pointer; opacity: 0.45;
+      }
+      .theme-switcher button:hover { opacity: 0.8; }
+      .theme-switcher button.active { opacity: 1; outline: 2px solid var(--text); outline-offset: 2px; }
+      .theme-switcher button[data-theme="auto"]  { background: linear-gradient(135deg, #f8f6f1 50%, #2c3545 50%); }
+      .theme-switcher button[data-theme="light"] { background: #f8f6f1; box-shadow: inset 0 0 0 1px #d8d0b8; }
+      .theme-switcher button[data-theme="dark"]  { background: #2c3545; }
+      .theme-switcher button[data-theme="moon"]  { background: #232136; }
+      .theme-switcher button[data-theme="dawn"]  { background: #faf4ed; box-shadow: inset 0 0 0 1px #dfdad9; }
+
+      /* --- Section grid --- */
+      .sections {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.25rem;
+        align-items: start;
+      }
+      .sections > section {
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        padding: 1rem 1.25rem;
+      }
+      .sections > section > h2:first-child { margin-top: 0; }
+
+      /* ================================================================
+         PALETTE LIBRARY — copy values into light/dark blocks above.
+         Remember to update both the named block AND the matching
+         @media (prefers-color-scheme) block for auto mode.
+         ================================================================
+
+         LIGHT OPTIONS
+         paper:      --bg:#f8f6f1 --text:#4c432e --h2:#4c432e --h3:#7a6a4e --link:#aa9a73 --nav-bg:#ede9e0 --surface:#f0ede5 --border:#d8d0b8
+         gazette:    --bg:#f2f7ff --text:#000000 --h2:#000000 --h3:#444444 --link:#0066cc --nav-bg:#e5eef8 --surface:#e8f0f8 --border:#c8d4e4
+         cloud:      --bg:#f1f2f0 --text:#35342f --h2:#35342f --h3:#656055 --link:#37bbe4 --nav-bg:#e4e6e2 --surface:#e8e9e6 --border:#c8cac5
+         white:      --bg:#ffffff --text:#222222 --h2:#222222 --h3:#555555 --link:#3366cc --nav-bg:#f5f5f5 --surface:#f5f5f5 --border:#dddddd
+         rp-dawn:    (see dawn theme above)
+         passion:    --bg:#f5f5f5 --text:#12005e --h2:#8e24aa --h3:#6600aa --link:#8e24aa --nav-bg:#ebebeb --surface:#eeeeee --border:#d0c8e0
+         cab:        --bg:#f6d305 --text:#1f1f1f --h2:#1f1f1f --h3:#3a3a3a --link:#1f1f1f --nav-bg:#e0c000 --surface:#e8cc00 --border:#c0a000
+
+         DARK OPTIONS
+         charcoal:   --bg:#2c3545 --text:#e0e4ec --h2:#d4a843 --h3:#8fa0b8 --link:#9ccfd8 --nav-bg:#1e2535 --surface:#1e2535 --border:#3d4f65
+         dark:       --bg:#2d2f38 --text:#e4e6f0 --h2:#e4e6f0 --h3:#8898a8 --link:#68b87e --nav-bg:#22242c --surface:#22242c --border:#3c3e4a
+         onedark:    --bg:#282c34 --text:#dfd9d6 --h2:#98c379 --h3:#c678dd --link:#61afef --nav-bg:#1e2228 --surface:#313640 --border:#3e4450
+         espresso:   --bg:#21211f --text:#d1b59a --h2:#d1b59a --h3:#8a7a6a --link:#c8a070 --nav-bg:#181816 --surface:#2a2a28 --border:#3e3e3c
+         blackboard: --bg:#1a1a1a --text:#fffdea --h2:#fffdea --h3:#a0a0a0 --link:#88bbdd --nav-bg:#111111 --surface:#252525 --border:#3a3a3a
+         tron:       --bg:#242b33 --text:#effbff --h2:#6ee2ff --h3:#8ab8c8 --link:#6ee2ff --nav-bg:#1a2028 --surface:#2e3840 --border:#3a4850
+         neon:       --bg:#091833 --text:#effbff --h2:#ea00d9 --h3:#a080c0 --link:#ea00d9 --nav-bg:#060f22 --surface:#0e2040 --border:#1a3060
+         mint:       --bg:#282525 --text:#d9d9d9 --h2:#50fbc2 --h3:#8ab8a8 --link:#50fbc2 --nav-bg:#1e1c1c --surface:#302d2d --border:#3e3a3a
+         chalk:      --bg:#263238 --text:#aabbc3 --h2:#ff869a --h3:#7a9aa8 --link:#ff869a --nav-bg:#1d2a30 --surface:#2e3e45 --border:#3a4e58
+         lime:       --bg:#263238 --text:#aabbc3 --h2:#aeea00 --h3:#7a9aa8 --link:#aeea00 --nav-bg:#1d2a30 --surface:#2e3e45 --border:#3a4e58
+         blues:      --bg:#2b2c56 --text:#eff1fc --h2:#6677eb --h3:#9098c8 --link:#6677eb --nav-bg:#20213e --surface:#353668 --border:#404280
+         pumpkin:    --bg:#2d3436 --text:#effbff --h2:#ffa500 --h3:#9ab0b8 --link:#ffa500 --nav-bg:#222828 --surface:#383e40 --border:#444e50
+         rp-moon:    (see moon theme above)
+         ================================================================ */
     </style>
-</head>
-<body>
+  </head>
+  <body>
     {{if .Pages}}
     <nav>
-        <ul>
+      <ul>
         {{range .Pages}}
-            <li><a href="{{.Slug}}.html">{{.Title}}</a></li>
+        <li><a href="{{.Slug}}.html">{{.Title}}</a></li>
         {{end}}
-        </ul>
+      </ul>
+      <div class="theme-switcher">
+        <button data-theme="auto"  onclick="setTheme('auto')"  title="Auto (OS)"></button>
+        <button data-theme="light" onclick="setTheme('light')" title="Light"></button>
+        <button data-theme="dark"  onclick="setTheme('dark')"  title="Dark"></button>
+        <button data-theme="moon"  onclick="setTheme('moon')"  title="Moon"></button>
+        <button data-theme="dawn"  onclick="setTheme('dawn')"  title="Dawn"></button>
+      </div>
     </nav>
     {{end}}
 
-    <main>
-        {{.Content}}
-    </main>
-</body>
+    <main>{{.Content}}</main>
+    <script>
+      function setTheme(t) {
+        document.documentElement.setAttribute("data-theme", t);
+        localStorage.setItem("theme", t);
+        document.querySelectorAll(".theme-switcher button").forEach(b =>
+          b.classList.toggle("active", b.dataset.theme === t)
+        );
+      }
+      setTheme(localStorage.getItem("theme") || "{{.Theme}}");
+    </script>
+  </body>
 </html>

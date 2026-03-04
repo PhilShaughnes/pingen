@@ -19,8 +19,8 @@ func main() {
 	flag.StringVar(&outDir, "o", "./public", "Output directory for generated HTML (shorthand)")
 	flag.StringVar(&templatePath, "template", "", "Custom template file (optional, uses embedded template by default)")
 	flag.StringVar(&templatePath, "t", "", "Custom template file (shorthand)")
-	flag.StringVar(&theme, "theme", "default", "Color theme: default, simple, warm, dark")
-	flag.StringVar(&theme, "T", "default", "Color theme shorthand")
+	flag.StringVar(&theme, "theme", "auto", "Color theme: auto, light, dark, moon, dawn")
+	flag.StringVar(&theme, "T", "auto", "Color theme shorthand")
 	flag.Parse()
 
 	if err := generate(sourceDir, outDir, templatePath, theme); err != nil {
