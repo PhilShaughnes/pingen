@@ -1,50 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="{{.Theme}}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{.Title}}</title>
     <style>
-        * {
-            box-sizing: border-box;
+        /* --- Themes --- */
+        :root {
+            --bg:       #ffffff;
+            --text:     #333333;
+            --h2:       #2c3e50;
+            --h3:       #34495e;
+            --link:     #3498db;
+            --nav-bg:   #f8f9fa;
+            --surface:  #f4f4f4;
+            --border:   #e0e0e0;
         }
+        [data-theme="simple"] {
+            --bg:       #ffffff;
+            --text:     #212121;
+            --h2:       #0d47a1;
+            --h3:       #1565c0;
+            --link:     #0d47a1;
+            --nav-bg:   #f5f7ff;
+            --surface:  #f5f7ff;
+            --border:   #898ea4;
+        }
+        [data-theme="warm"] {
+            --bg:       #faf7f2;
+            --text:     #3d2c1e;
+            --h2:       #7c4a1e;
+            --h3:       #9a6234;
+            --link:     #c0562a;
+            --nav-bg:   #f0e8db;
+            --surface:  #ede5d8;
+            --border:   #c9aa88;
+        }
+        [data-theme="dark"] {
+            --bg:       #0f0f0f;
+            --text:     #d0d0d0;
+            --h2:       #00e5a0;
+            --h3:       #00b8d4;
+            --link:     #ff6ac1;
+            --nav-bg:   #1a1a1a;
+            --surface:  #1a1a1a;
+            --border:   #2e2e2e;
+        }
+
+        /* --- Base --- */
+        * { box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.6;
-            max-width: 900px;
+            max-width: 90rem;
             margin: 0 auto;
-            padding: 2rem;
-            color: #333;
+            padding: 1.5rem 2.5rem;
+            color: var(--text);
+            background: var(--bg);
         }
-        h1 {
-            border-bottom: 2px solid #eee;
-            padding-bottom: 0.5rem;
+        h1 { border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
+        h2 { margin-top: 2rem; color: var(--h2); }
+        h3 { color: var(--h3); }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        ul { list-style-type: disc; padding-left: 2rem; }
+        li { margin: 0.5rem 0; }
+        code {
+            background: var(--surface);
+            padding: 0.2rem 0.4rem;
+            border-radius: 3px;
+            font-size: 0.9em;
         }
-        h2 {
-            margin-top: 2rem;
-            color: #2c3e50;
+        pre {
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 4px;
+            overflow-x: auto;
         }
-        h3 {
-            color: #34495e;
-        }
-        a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        ul {
-            list-style-type: disc;
-            padding-left: 2rem;
-        }
-        li {
-            margin: 0.5rem 0;
-        }
+        pre code { padding: 0; background: none; }
+
+        /* --- Nav --- */
         nav {
             margin-bottom: 2rem;
             padding: 1rem;
-            background: #f8f9fa;
+            background: var(--nav-bg);
             border-radius: 4px;
         }
         nav ul {
@@ -55,25 +94,21 @@
             flex-wrap: wrap;
             gap: 1rem;
         }
-        nav li {
-            margin: 0;
+        nav li { margin: 0; }
+
+        /* --- Section grid --- */
+        .sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.25rem;
+            align-items: start;
         }
-        code {
-            background: #f4f4f4;
-            padding: 0.2rem 0.4rem;
-            border-radius: 3px;
-            font-size: 0.9em;
-        }
-        pre {
-            background: #f4f4f4;
-            padding: 1rem;
+        .sections > section {
+            border: 1px solid var(--border);
             border-radius: 4px;
-            overflow-x: auto;
+            padding: 1rem 1.25rem;
         }
-        pre code {
-            padding: 0;
-            background: none;
-        }
+        .sections > section > h2:first-child { margin-top: 0; }
     </style>
 </head>
 <body>

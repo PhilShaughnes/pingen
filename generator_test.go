@@ -48,7 +48,7 @@ func TestGenerateSiteE2E(t *testing.T) {
 				}
 			}
 
-			if err := generateSite(sourceDir, outDir, ""); err != nil {
+			if err := generateSite(sourceDir, outDir, "", "default"); err != nil {
 				t.Fatalf("generateSite() error = %v", err)
 			}
 

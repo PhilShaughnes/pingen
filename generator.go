@@ -23,9 +23,10 @@ type PageData struct {
 	Title   string
 	Content template.HTML
 	Pages   []Page
+	Theme   string
 }
 
-func generateSite(sourceDir, outDir, templatePath string) error {
+func generateSite(sourceDir, outDir, templatePath, theme string) error {
 	pages, err := collectPages(sourceDir)
 	if err != nil {
 		return fmt.Errorf("failed to collect pages: %w", err)
@@ -55,12 +56,13 @@ func generateSite(sourceDir, outDir, templatePath string) error {
 			return fmt.Errorf("failed to parse markdown for %s: %w", page.FilePath, err)
 		}
 
-		page.Content = template.HTML(html)
+		page.Content = template.HTML(wrapSections(html))
 
 		data := PageData{
 			Title:   page.Title,
 			Content: page.Content,
 			Pages:   pages,
+			Theme:   theme,
 		}
 
 		outPath := filepath.Join(outDir, page.Slug+".html")
@@ -78,6 +80,23 @@ func generateSite(sourceDir, outDir, templatePath string) error {
 	}
 
 	return nil
+}
+
+func wrapSections(html []byte) []byte {
+	parts := strings.Split(string(html), "<h2>")
+	if len(parts) <= 1 {
+		return html
+	}
+	var buf strings.Builder
+	buf.WriteString(parts[0])
+	buf.WriteString(`<div class="sections">`)
+	for _, part := range parts[1:] {
+		buf.WriteString("<section><h2>")
+		buf.WriteString(part)
+		buf.WriteString("</section>")
+	}
+	buf.WriteString("</div>")
+	return []byte(buf.String())
 }
 
 func collectPages(sourceDir string) ([]Page, error) {
