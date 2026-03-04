@@ -16,41 +16,41 @@
       :root,
       [data-theme="light"] {
         --bg: #f8f6f1; --text: #4c432e; --h2: #4c432e; --h3: #7a6a4e;
-        --link: #aa9a73; --nav-bg: #ede9e0; --surface: #f0ede5; --border: #d8d0b8;
+        --link: #aa9a73; --surface: #ede9e0; --border: #d8d0b8;
       }
       /* dark: charcoal */
       [data-theme="dark"] {
         --bg: #2c3545; --text: #e0e4ec; --h2: #d4a843; --h3: #8fa0b8;
-        --link: #9ccfd8; --nav-bg: #1e2535; --surface: #1e2535; --border: #3d4f65;
+        --link: #9ccfd8; --surface: #1e2535; --border: #3d4f65;
       }
       /* moon: rosé pine moon */
       [data-theme="moon"] {
         --bg: #232136; --text: #e0def4; --h2: #ea9a97; --h3: #908caa;
-        --link: #9ccfd8; --nav-bg: #2a273f; --surface: #393552; --border: #44415a;
+        --link: #9ccfd8; --surface: #2a273f; --border: #44415a;
       }
       /* dawn: rosé pine dawn */
       [data-theme="dawn"] {
         --bg: #faf4ed; --text: #575279; --h2: #b4637a; --h3: #797593;
-        --link: #286983; --nav-bg: #f2e9e1; --surface: #fffaf3; --border: #dfdad9;
+        --link: #286983; --surface: #f2e9e1; --border: #dfdad9;
       }
       /* auto: OS preference — mirrors light/dark palettes above */
       @media (prefers-color-scheme: light) {
         [data-theme="auto"] {
           --bg: #f8f6f1; --text: #4c432e; --h2: #4c432e; --h3: #7a6a4e;
-          --link: #aa9a73; --nav-bg: #ede9e0; --surface: #f0ede5; --border: #d8d0b8;
+          --link: #aa9a73; --surface: #ede9e0; --border: #d8d0b8;
         }
       }
       @media (prefers-color-scheme: dark) {
         [data-theme="auto"] {
           --bg: #2c3545; --text: #e0e4ec; --h2: #d4a843; --h3: #8fa0b8;
-          --link: #9ccfd8; --nav-bg: #1e2535; --surface: #1e2535; --border: #3d4f65;
+          --link: #9ccfd8; --surface: #1e2535; --border: #3d4f65;
         }
       }
 
       /* --- Base --- */
       * { box-sizing: border-box; }
       body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-family: system-ui, sans-serif;
         line-height: 1.6;
         max-width: 90rem;
         margin: 0 auto;
@@ -72,9 +72,8 @@
       /* --- Nav --- */
       nav {
         margin-bottom: 2rem;
-        padding: 0.75rem 1rem;
-        background: var(--nav-bg);
-        border-radius: 4px;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--border);
         display: flex;
         align-items: center;
       }
@@ -82,33 +81,26 @@
       nav li { margin: 0; }
 
       /* --- Theme switcher --- */
-      /* If you swap light/dark palettes, update the circle bg colors below too */
-      .theme-switcher { margin-left: auto; flex-shrink: 0; display: flex; gap: 0.4rem; align-items: center; }
+      .theme-switcher { margin-left: auto; flex-shrink: 0; display: flex; gap: 0.5rem; align-items: center; }
       .theme-switcher button {
-        width: 13px; height: 13px; border-radius: 50%;
-        padding: 0; border: none; cursor: pointer; opacity: 0.45;
+        background: none; border: none; color: var(--text);
+        font-size: 1rem; line-height: 1; padding: 0; cursor: pointer; opacity: 0.35;
       }
-      .theme-switcher button:hover { opacity: 0.8; }
-      .theme-switcher button.active { opacity: 1; outline: 2px solid var(--text); outline-offset: 2px; }
-      .theme-switcher button[data-theme="auto"]  { background: linear-gradient(135deg, #f8f6f1 50%, #2c3545 50%); }
-      .theme-switcher button[data-theme="light"] { background: #f8f6f1; box-shadow: inset 0 0 0 1px #d8d0b8; }
-      .theme-switcher button[data-theme="dark"]  { background: #2c3545; }
-      .theme-switcher button[data-theme="moon"]  { background: #232136; }
-      .theme-switcher button[data-theme="dawn"]  { background: #faf4ed; box-shadow: inset 0 0 0 1px #dfdad9; }
+      .theme-switcher button:hover { opacity: 0.75; }
+      .theme-switcher button.active { opacity: 1; }
 
       /* --- Section grid --- */
       .sections {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 1.25rem;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 0.5rem 2.5rem;
         align-items: start;
       }
-      .sections > section {
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        padding: 1rem 1.25rem;
+      .sections > section > h2:first-child {
+        margin-top: 0;
+        padding-bottom: 0.3rem;
+        border-bottom: 1px solid var(--border);
       }
-      .sections > section > h2:first-child { margin-top: 0; }
 
       /* ================================================================
          PALETTE LIBRARY — copy values into light/dark blocks above.
@@ -116,28 +108,30 @@
          @media (prefers-color-scheme) block for auto mode.
          ================================================================
 
+         Variables: --bg --text --h2 --h3 --link --surface --border
+
          LIGHT OPTIONS
-         paper:      --bg:#f8f6f1 --text:#4c432e --h2:#4c432e --h3:#7a6a4e --link:#aa9a73 --nav-bg:#ede9e0 --surface:#f0ede5 --border:#d8d0b8
-         gazette:    --bg:#f2f7ff --text:#000000 --h2:#000000 --h3:#444444 --link:#0066cc --nav-bg:#e5eef8 --surface:#e8f0f8 --border:#c8d4e4
-         cloud:      --bg:#f1f2f0 --text:#35342f --h2:#35342f --h3:#656055 --link:#37bbe4 --nav-bg:#e4e6e2 --surface:#e8e9e6 --border:#c8cac5
-         white:      --bg:#ffffff --text:#222222 --h2:#222222 --h3:#555555 --link:#3366cc --nav-bg:#f5f5f5 --surface:#f5f5f5 --border:#dddddd
+         paper:      --bg:#f8f6f1 --text:#4c432e --h2:#4c432e --h3:#7a6a4e --link:#aa9a73 --surface:#ede9e0 --border:#d8d0b8
+         gazette:    --bg:#f2f7ff --text:#000000 --h2:#000000 --h3:#444444 --link:#0066cc --surface:#e5eef8 --border:#c8d4e4
+         cloud:      --bg:#f1f2f0 --text:#35342f --h2:#35342f --h3:#656055 --link:#37bbe4 --surface:#e4e6e2 --border:#c8cac5
+         white:      --bg:#ffffff --text:#222222 --h2:#222222 --h3:#555555 --link:#3366cc --surface:#f5f5f5 --border:#dddddd
          rp-dawn:    (see dawn theme above)
-         passion:    --bg:#f5f5f5 --text:#12005e --h2:#8e24aa --h3:#6600aa --link:#8e24aa --nav-bg:#ebebeb --surface:#eeeeee --border:#d0c8e0
-         cab:        --bg:#f6d305 --text:#1f1f1f --h2:#1f1f1f --h3:#3a3a3a --link:#1f1f1f --nav-bg:#e0c000 --surface:#e8cc00 --border:#c0a000
+         passion:    --bg:#f5f5f5 --text:#12005e --h2:#8e24aa --h3:#6600aa --link:#8e24aa --surface:#eeeeee --border:#d0c8e0
+         cab:        --bg:#f6d305 --text:#1f1f1f --h2:#1f1f1f --h3:#3a3a3a --link:#1f1f1f --surface:#e8cc00 --border:#c0a000
 
          DARK OPTIONS
-         charcoal:   --bg:#2c3545 --text:#e0e4ec --h2:#d4a843 --h3:#8fa0b8 --link:#9ccfd8 --nav-bg:#1e2535 --surface:#1e2535 --border:#3d4f65
-         dark:       --bg:#2d2f38 --text:#e4e6f0 --h2:#e4e6f0 --h3:#8898a8 --link:#68b87e --nav-bg:#22242c --surface:#22242c --border:#3c3e4a
-         onedark:    --bg:#282c34 --text:#dfd9d6 --h2:#98c379 --h3:#c678dd --link:#61afef --nav-bg:#1e2228 --surface:#313640 --border:#3e4450
-         espresso:   --bg:#21211f --text:#d1b59a --h2:#d1b59a --h3:#8a7a6a --link:#c8a070 --nav-bg:#181816 --surface:#2a2a28 --border:#3e3e3c
-         blackboard: --bg:#1a1a1a --text:#fffdea --h2:#fffdea --h3:#a0a0a0 --link:#88bbdd --nav-bg:#111111 --surface:#252525 --border:#3a3a3a
-         tron:       --bg:#242b33 --text:#effbff --h2:#6ee2ff --h3:#8ab8c8 --link:#6ee2ff --nav-bg:#1a2028 --surface:#2e3840 --border:#3a4850
-         neon:       --bg:#091833 --text:#effbff --h2:#ea00d9 --h3:#a080c0 --link:#ea00d9 --nav-bg:#060f22 --surface:#0e2040 --border:#1a3060
-         mint:       --bg:#282525 --text:#d9d9d9 --h2:#50fbc2 --h3:#8ab8a8 --link:#50fbc2 --nav-bg:#1e1c1c --surface:#302d2d --border:#3e3a3a
-         chalk:      --bg:#263238 --text:#aabbc3 --h2:#ff869a --h3:#7a9aa8 --link:#ff869a --nav-bg:#1d2a30 --surface:#2e3e45 --border:#3a4e58
-         lime:       --bg:#263238 --text:#aabbc3 --h2:#aeea00 --h3:#7a9aa8 --link:#aeea00 --nav-bg:#1d2a30 --surface:#2e3e45 --border:#3a4e58
-         blues:      --bg:#2b2c56 --text:#eff1fc --h2:#6677eb --h3:#9098c8 --link:#6677eb --nav-bg:#20213e --surface:#353668 --border:#404280
-         pumpkin:    --bg:#2d3436 --text:#effbff --h2:#ffa500 --h3:#9ab0b8 --link:#ffa500 --nav-bg:#222828 --surface:#383e40 --border:#444e50
+         charcoal:   --bg:#2c3545 --text:#e0e4ec --h2:#d4a843 --h3:#8fa0b8 --link:#9ccfd8 --surface:#1e2535 --border:#3d4f65
+         dark:       --bg:#2d2f38 --text:#e4e6f0 --h2:#e4e6f0 --h3:#8898a8 --link:#68b87e --surface:#22242c --border:#3c3e4a
+         onedark:    --bg:#282c34 --text:#dfd9d6 --h2:#98c379 --h3:#c678dd --link:#61afef --surface:#313640 --border:#3e4450
+         espresso:   --bg:#21211f --text:#d1b59a --h2:#d1b59a --h3:#8a7a6a --link:#c8a070 --surface:#2a2a28 --border:#3e3e3c
+         blackboard: --bg:#1a1a1a --text:#fffdea --h2:#fffdea --h3:#a0a0a0 --link:#88bbdd --surface:#252525 --border:#3a3a3a
+         tron:       --bg:#242b33 --text:#effbff --h2:#6ee2ff --h3:#8ab8c8 --link:#6ee2ff --surface:#2e3840 --border:#3a4850
+         neon:       --bg:#091833 --text:#effbff --h2:#ea00d9 --h3:#a080c0 --link:#ea00d9 --surface:#0e2040 --border:#1a3060
+         mint:       --bg:#282525 --text:#d9d9d9 --h2:#50fbc2 --h3:#8ab8a8 --link:#50fbc2 --surface:#302d2d --border:#3e3a3a
+         chalk:      --bg:#263238 --text:#aabbc3 --h2:#ff869a --h3:#7a9aa8 --link:#ff869a --surface:#2e3e45 --border:#3a4e58
+         lime:       --bg:#263238 --text:#aabbc3 --h2:#aeea00 --h3:#7a9aa8 --link:#aeea00 --surface:#2e3e45 --border:#3a4e58
+         blues:      --bg:#2b2c56 --text:#eff1fc --h2:#6677eb --h3:#9098c8 --link:#6677eb --surface:#353668 --border:#404280
+         pumpkin:    --bg:#2d3436 --text:#effbff --h2:#ffa500 --h3:#9ab0b8 --link:#ffa500 --surface:#383e40 --border:#444e50
          rp-moon:    (see moon theme above)
          ================================================================ */
     </style>
@@ -151,11 +145,11 @@
         {{end}}
       </ul>
       <div class="theme-switcher">
-        <button data-theme="auto"  onclick="setTheme('auto')"  title="Auto (OS)"></button>
-        <button data-theme="light" onclick="setTheme('light')" title="Light"></button>
-        <button data-theme="dark"  onclick="setTheme('dark')"  title="Dark"></button>
-        <button data-theme="moon"  onclick="setTheme('moon')"  title="Moon"></button>
-        <button data-theme="dawn"  onclick="setTheme('dawn')"  title="Dawn"></button>
+        <button data-theme="auto"  onclick="setTheme('auto')"  title="Auto (OS)">◑</button>
+        <button data-theme="light" onclick="setTheme('light')" title="Light">○</button>
+        <button data-theme="dark"  onclick="setTheme('dark')"  title="Dark">●</button>
+        <button data-theme="moon"  onclick="setTheme('moon')"  title="Moon">☽</button>
+        <button data-theme="dawn"  onclick="setTheme('dawn')"  title="Dawn">◐</button>
       </div>
     </nav>
     {{end}}
