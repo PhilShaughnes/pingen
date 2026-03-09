@@ -15,40 +15,92 @@
       /* light: paper */
       :root,
       [data-theme="light"] {
-        --bg: #f8f6f1; --text: #4c432e; --h2: #4c432e; --h3: #7a6a4e;
-        --link: #aa9a73; --surface: #ede9e0; --border: #d8d0b8;
+        --bg: #f8f6f1;
+        --text: #4c432e;
+        --h2: #4c432e;
+        --h3: #7a6a4e;
+        --link: #aa9a73;
+        --surface: #ede9e0;
+        --border: #d8d0b8;
       }
       /* dark: charcoal */
       [data-theme="dark"] {
-        --bg: #2c3545; --text: #e0e4ec; --h2: #d4a843; --h3: #8fa0b8;
-        --link: #9ccfd8; --surface: #1e2535; --border: #3d4f65;
+        --bg: #2c3545;
+        --text: #e0e4ec;
+        --h2: #d4a843;
+        --h3: #8fa0b8;
+        --link: #9ccfd8;
+        --surface: #1e2535;
+        --border: #3d4f65;
       }
       /* moon: rosé pine moon */
       [data-theme="moon"] {
-        --bg: #232136; --text: #e0def4; --h2: #ea9a97; --h3: #908caa;
-        --link: #9ccfd8; --surface: #2a273f; --border: #44415a;
+        --bg: #232136;
+        --text: #e0def4;
+        --h2: #ea9a97;
+        --h3: #908caa;
+        --link: #9ccfd8;
+        --surface: #2a273f;
+        --border: #44415a;
       }
       /* dawn: rosé pine dawn */
       [data-theme="dawn"] {
-        --bg: #faf4ed; --text: #575279; --h2: #b4637a; --h3: #797593;
-        --link: #286983; --surface: #f2e9e1; --border: #dfdad9;
+        --bg: #faf4ed;
+        --text: #575279;
+        --h2: #b4637a;
+        --h3: #797593;
+        --link: #286983;
+        --surface: #f2e9e1;
+        --border: #dfdad9;
+      }
+      /* gray: elemental gray (A Fine Start light) */
+      [data-theme="gray"] {
+        --bg: #ebebeb;
+        --text: #2e2e2e;
+        --h2: #2e2e2e;
+        --h3: #888888;
+        --link: #b83232;
+        --surface: #d8d8d8;
+        --border: #cccccc;
+      }
+      /* flexoki: flexoki dark (A Fine Start dark) */
+      [data-theme="flexoki"] {
+        --bg: #1a1a18;
+        --text: #cecdc3;
+        --h2: #cecdc3;
+        --h3: #878580;
+        --link: #ce5d97;
+        --surface: #272725;
+        --border: #343331;
       }
       /* auto: OS preference — mirrors light/dark palettes above */
       @media (prefers-color-scheme: light) {
         [data-theme="auto"] {
-          --bg: #f8f6f1; --text: #4c432e; --h2: #4c432e; --h3: #7a6a4e;
-          --link: #aa9a73; --surface: #ede9e0; --border: #d8d0b8;
+          --bg: #f8f6f1;
+          --text: #4c432e;
+          --h2: #4c432e;
+          --h3: #7a6a4e;
+          --link: #aa9a73;
+          --surface: #ede9e0;
+          --border: #d8d0b8;
         }
       }
       @media (prefers-color-scheme: dark) {
         [data-theme="auto"] {
-          --bg: #2c3545; --text: #e0e4ec; --h2: #d4a843; --h3: #8fa0b8;
-          --link: #9ccfd8; --surface: #1e2535; --border: #3d4f65;
+          --bg: #2c3545;
+          --text: #e0e4ec;
+          --h2: #d4a843;
+          --h3: #8fa0b8;
+          --link: #9ccfd8;
+          --surface: #1e2535;
+          --border: #3d4f65;
         }
       }
 
       /* --- Base --- */
-      * { box-sizing: border-box; }
+      * {
+        box-sizing: border-box;
+      }
       body {
         font-family: system-ui, sans-serif;
         line-height: 1.6;
@@ -58,16 +110,46 @@
         color: var(--text);
         background: var(--bg);
       }
-      h1 { border-bottom: 2px solid var(--border); padding-bottom: 0.5rem; }
-      h2 { margin-top: 2rem; color: var(--h2); }
-      h3 { color: var(--h3); }
-      a { color: var(--link); text-decoration: none; }
-      a:hover { text-decoration: underline; }
-      ul { list-style-type: disc; padding-left: 2rem; }
-      li { margin: 0.5rem 0; }
-      code { background: var(--surface); padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.9em; }
-      pre { background: var(--surface); padding: 1rem; border-radius: 4px; overflow-x: auto; }
-      pre code { padding: 0; background: none; }
+      h1 {
+        margin-bottom: 1.5rem;
+      }
+      h2 {
+        margin-top: 2rem;
+        color: var(--h2);
+      }
+      h3 {
+        color: var(--h3);
+      }
+      a {
+        color: var(--link);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      ul {
+        list-style-type: disc;
+        padding-left: 2rem;
+      }
+      li {
+        margin: 0.5rem 0;
+      }
+      code {
+        background: var(--surface);
+        padding: 0.2rem 0.4rem;
+        border-radius: 3px;
+        font-size: 0.9em;
+      }
+      pre {
+        background: var(--surface);
+        padding: 1rem;
+        border-radius: 4px;
+        overflow-x: auto;
+      }
+      pre code {
+        padding: 0;
+        background: none;
+      }
 
       /* --- Nav --- */
       nav {
@@ -77,29 +159,96 @@
         display: flex;
         align-items: center;
       }
-      nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 1rem; flex: 1; }
-      nav li { margin: 0; }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        flex: 1;
+      }
+      nav li {
+        margin: 0;
+      }
 
       /* --- Theme switcher --- */
-      .theme-switcher { margin-left: auto; flex-shrink: 0; display: flex; gap: 0.5rem; align-items: center; }
-      .theme-switcher button {
-        background: none; border: none; color: var(--text);
-        font-size: 1rem; line-height: 1; padding: 0; cursor: pointer; opacity: 0.35;
+      .theme-switcher {
+        margin-left: auto;
+        flex-shrink: 0;
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
       }
-      .theme-switcher button:hover { opacity: 0.75; }
-      .theme-switcher button.active { opacity: 1; }
+      .theme-switcher button {
+        background: none;
+        border: none;
+        color: var(--text);
+        font-size: 1rem;
+        line-height: 1;
+        padding: 0;
+        cursor: pointer;
+        opacity: 0.35;
+      }
+      .theme-switcher button:hover {
+        opacity: 0.75;
+      }
+      .theme-switcher button.active {
+        opacity: 1;
+      }
 
-      /* --- Section grid --- */
+      /* --- Section columns --- */
       .sections {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-        gap: 0.5rem 2.5rem;
-        align-items: start;
+        columns: 240px;
+        column-gap: 2.5rem;
+      }
+      .sections > section {
+        break-inside: avoid;
+        margin-bottom: 1.5rem;
       }
       .sections > section > h2:first-child {
         margin-top: 0;
-        padding-bottom: 0.3rem;
-        border-bottom: 1px solid var(--border);
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--h3);
+        font-weight: 600;
+        padding-top: 0.4rem;
+        margin-bottom: 0.5rem;
+        border-top: 1px solid var(--border);
+      }
+      .sections ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .sections li {
+        margin: 0;
+      }
+      .sections li > p {
+        margin: 0;
+      }
+      .sections li:has(> ul) a {
+        padding-bottom: 0;
+      }
+      .sections ul ul {
+        padding-left: 1rem;
+        margin: 0;
+      }
+      .sections ul ul a {
+        color: var(--h3);
+      }
+      .sections a {
+        display: block;
+        padding: 0.2rem 0.4rem;
+        margin: 0 -0.4rem;
+        border-radius: 3px;
+        color: var(--text);
+      }
+      .sections a:hover {
+        background: var(--surface);
+        color: var(--link);
+        text-decoration: none;
       }
 
       /* ================================================================
@@ -145,11 +294,31 @@
         {{end}}
       </ul>
       <div class="theme-switcher">
-        <button data-theme="auto"  onclick="setTheme('auto')"  title="Auto (OS)">◑</button>
-        <button data-theme="light" onclick="setTheme('light')" title="Light">○</button>
-        <button data-theme="dark"  onclick="setTheme('dark')"  title="Dark">●</button>
-        <button data-theme="moon"  onclick="setTheme('moon')"  title="Moon">☽</button>
-        <button data-theme="dawn"  onclick="setTheme('dawn')"  title="Dawn">◐</button>
+        <button data-theme="auto" onclick="setTheme('auto')" title="Auto (OS)">
+          ◑
+        </button>
+        <button data-theme="light" onclick="setTheme('light')" title="Light">
+          1
+        </button>
+        <button data-theme="dark" onclick="setTheme('dark')" title="Dark">
+          2
+        </button>
+        <button data-theme="moon" onclick="setTheme('moon')" title="Moon">
+          3
+        </button>
+        <button data-theme="dawn" onclick="setTheme('dawn')" title="Dawn">
+          4
+        </button>
+        <button data-theme="gray" onclick="setTheme('gray')" title="Gray">
+          5
+        </button>
+        <button
+          data-theme="flexoki"
+          onclick="setTheme('flexoki')"
+          title="Flexoki"
+        >
+          6
+        </button>
       </div>
     </nav>
     {{end}}
@@ -159,9 +328,9 @@
       function setTheme(t) {
         document.documentElement.setAttribute("data-theme", t);
         localStorage.setItem("theme", t);
-        document.querySelectorAll(".theme-switcher button").forEach(b =>
-          b.classList.toggle("active", b.dataset.theme === t)
-        );
+        document
+          .querySelectorAll(".theme-switcher button")
+          .forEach((b) => b.classList.toggle("active", b.dataset.theme === t));
       }
       setTheme(localStorage.getItem("theme") || "{{.Theme}}");
     </script>
