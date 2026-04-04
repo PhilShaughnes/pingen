@@ -24,6 +24,7 @@ go.work
 test-content/
 test-output/
 pingen
+pingen-linux
 
 # other
 tmp/
