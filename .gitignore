@@ -24,3 +24,6 @@ go.work
 test-content/
 test-output/
 pingen
+
+# other
+tmp/

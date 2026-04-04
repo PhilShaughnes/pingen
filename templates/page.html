@@ -6,94 +6,61 @@
     <title>{{.Title}}</title>
     <style>
       /* ================================================================
-         ACTIVE PALETTES
-         To swap light: edit [data-theme="light"] + @media light block
-         To swap dark:  edit [data-theme="dark"]  + @media dark block
-         Palette library at bottom of this file
+         ACTIVE PALETTES — vars: --bg --text --muted --accent --surface
+         To swap: edit named block + matching @media block for "auto"
+         Palette library at bottom
          ================================================================ */
 
-      /* light: paper */
+      /* light: red */
       :root,
       [data-theme="light"] {
-        --bg: #f8f6f1;
-        --text: #4c432e;
-        --h2: #4c432e;
-        --h3: #7a6a4e;
-        --link: #aa9a73;
-        --surface: #ede9e0;
-        --border: #d8d0b8;
+        --bg: #ebebeb;
+        --text: #2e2e2e;
+        --muted: #888888;
+        --accent: #b83232;
+        --surface: #d8d8d8;
       }
-      /* dark: charcoal */
+      /* dark: pink */
       [data-theme="dark"] {
-        --bg: #2c3545;
-        --text: #e0e4ec;
-        --h2: #d4a843;
-        --h3: #8fa0b8;
-        --link: #9ccfd8;
-        --surface: #1e2535;
-        --border: #3d4f65;
+        --bg: #1a1a18;
+        --text: #cecdc3;
+        --muted: #878580;
+        --accent: #ce5d97;
+        --surface: #272725;
       }
       /* moon: rosé pine moon */
       [data-theme="moon"] {
         --bg: #232136;
         --text: #e0def4;
-        --h2: #ea9a97;
-        --h3: #908caa;
-        --link: #9ccfd8;
+        --muted: #908caa;
+        --accent: #9ccfd8;
         --surface: #2a273f;
-        --border: #44415a;
       }
       /* dawn: rosé pine dawn */
       [data-theme="dawn"] {
         --bg: #faf4ed;
         --text: #575279;
-        --h2: #b4637a;
-        --h3: #797593;
-        --link: #286983;
+        --muted: #797593;
+        --accent: #286983;
         --surface: #f2e9e1;
-        --border: #dfdad9;
       }
-      /* gray: elemental gray (A Fine Start light) */
-      [data-theme="gray"] {
-        --bg: #ebebeb;
-        --text: #2e2e2e;
-        --h2: #2e2e2e;
-        --h3: #888888;
-        --link: #b83232;
-        --surface: #d8d8d8;
-        --border: #cccccc;
-      }
-      /* flexoki: flexoki dark (A Fine Start dark) */
-      [data-theme="flexoki"] {
-        --bg: #1a1a18;
-        --text: #cecdc3;
-        --h2: #cecdc3;
-        --h3: #878580;
-        --link: #ce5d97;
-        --surface: #272725;
-        --border: #343331;
-      }
-      /* auto: OS preference — mirrors light/dark palettes above */
+      /* auto: follows OS preference */
       @media (prefers-color-scheme: light) {
         [data-theme="auto"] {
-          --bg: #f8f6f1;
-          --text: #4c432e;
-          --h2: #4c432e;
-          --h3: #7a6a4e;
-          --link: #aa9a73;
-          --surface: #ede9e0;
-          --border: #d8d0b8;
+          --bg: #ebebeb;
+          --text: #2e2e2e;
+          --muted: #888888;
+          --accent: #b83232;
+          --surface: #d8d8d8;
         }
       }
       @media (prefers-color-scheme: dark) {
         [data-theme="auto"] {
-          --bg: #2c3545;
-          --text: #e0e4ec;
-          --h2: #d4a843;
-          --h3: #8fa0b8;
-          --link: #9ccfd8;
-          --surface: #1e2535;
-          --border: #3d4f65;
+          --bg: #1a1a18;
+          --text: #cecdc3;
+          --muted: #878580;
+          --accent: #ce5d97;
+          --surface: #272725;
         }
       }
 
@@ -113,26 +80,12 @@
       h1 {
         margin-bottom: 1.5rem;
       }
-      h2 {
-        margin-top: 2rem;
-        color: var(--h2);
-      }
-      h3 {
-        color: var(--h3);
-      }
       a {
-        color: var(--link);
+        color: var(--accent);
         text-decoration: none;
       }
       a:hover {
         text-decoration: underline;
-      }
-      ul {
-        list-style-type: disc;
-        padding-left: 2rem;
-      }
-      li {
-        margin: 0.5rem 0;
       }
       code {
         background: var(--surface);
@@ -155,9 +108,7 @@
       nav {
         margin-bottom: 2rem;
         padding: 0.5rem 0;
-        border-bottom: 1px solid var(--border);
-        display: flex;
-        align-items: center;
+        border-bottom: 1px solid var(--surface);
       }
       nav ul {
         list-style: none;
@@ -166,26 +117,28 @@
         display: flex;
         flex-wrap: wrap;
         gap: 1rem;
-        flex: 1;
-      }
-      nav li {
-        margin: 0;
       }
 
       /* --- Theme switcher --- */
       .theme-switcher {
-        margin-left: auto;
-        flex-shrink: 0;
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
         display: flex;
         gap: 0.5rem;
-        align-items: center;
+        background: var(--bg);
+        padding: 0.25rem;
+        border-radius: 4px;
+        opacity: 0.5;
+      }
+      .theme-switcher:hover {
+        opacity: 1;
       }
       .theme-switcher button {
         background: none;
         border: none;
         color: var(--text);
-        font-size: 1rem;
-        line-height: 1;
+        font-size: 0.85rem;
         padding: 0;
         cursor: pointer;
         opacity: 0.35;
@@ -197,7 +150,7 @@
         opacity: 1;
       }
 
-      /* --- Section columns --- */
+      /* --- Sections (bookmark columns) --- */
       .sections {
         columns: 240px;
         column-gap: 2.5rem;
@@ -206,82 +159,84 @@
         break-inside: avoid;
         margin-bottom: 1.5rem;
       }
+
+      /* Section label (h2) — small-caps, border-top */
       .sections > section > h2:first-child {
         margin-top: 0;
-        font-size: 0.7rem;
+        margin-bottom: 0.5rem;
+        padding-top: 0.3rem;
+        font-size: 0.9rem;
+        font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.08em;
-        color: var(--h3);
-        font-weight: 600;
-        padding-top: 0.4rem;
-        margin-bottom: 0.5rem;
-        border-top: 1px solid var(--border);
+        color: var(--muted);
+        border-top: 2px solid var(--surface);
       }
+
+      /* Sub-section label (h3) — same family, quieter */
+      .sections h3 {
+        margin-top: 0.75rem;
+        margin-bottom: 0.25rem;
+        font-size: 0.8rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+      }
+
+      /* Top-level bookmarks — block links with dot marker */
       .sections ul {
         list-style: none;
         padding: 0;
         margin: 0;
       }
-      .sections li {
-        margin: 0;
-      }
       .sections li > p {
         margin: 0;
       }
-      .sections li:has(> ul) a {
-        padding-bottom: 0;
+      .sections > section > ul {
+        padding-left: 1.2rem;
       }
-      .sections ul ul {
-        padding-left: 1rem;
-        margin: 0;
+      .sections > section > ul > li {
+        list-style-type: disc;
       }
-      .sections ul ul a {
-        color: var(--h3);
+      .sections > section > ul > li::marker {
+        color: var(--muted);
+        font-size: 0.65em;
       }
       .sections a {
         display: block;
-        padding: 0.2rem 0.4rem;
-        margin: 0 -0.4rem;
-        border-radius: 3px;
-        color: var(--text);
+        font-size: 0.925rem;
+        color: var(--accent);
       }
-      .sections a:hover {
-        background: var(--surface);
-        color: var(--link);
-        text-decoration: none;
+
+      /* Nested items — annotation/metadata, not navigation */
+      .sections ul ul {
+        padding: 0 0 0.25rem 0.75rem;
+        border-left: 2px solid var(--surface);
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+      .sections ul ul a {
+        display: inline;
+        color: var(--accent);
       }
 
       /* ================================================================
-         PALETTE LIBRARY — copy values into light/dark blocks above.
-         Remember to update both the named block AND the matching
-         @media (prefers-color-scheme) block for auto mode.
-         ================================================================
+         PALETTE LIBRARY — copy into active blocks above.
+         Vars: --bg --text --muted --accent --surface
 
-         Variables: --bg --text --h2 --h3 --link --surface --border
+         LIGHT
+         paper:    --bg:#f8f6f1 --text:#4c432e --muted:#7a6a4e --accent:#7a6040 --surface:#ede9e0
+         white:    --bg:#ffffff --text:#222222 --muted:#555555 --accent:#3366cc --surface:#f5f5f5
+         gazette:  --bg:#f2f7ff --text:#000000 --muted:#444444 --accent:#0066cc --surface:#e8f0f8
+         rp-dawn:  (see dawn theme above)
 
-         LIGHT OPTIONS
-         paper:      --bg:#f8f6f1 --text:#4c432e --h2:#4c432e --h3:#7a6a4e --link:#aa9a73 --surface:#ede9e0 --border:#d8d0b8
-         gazette:    --bg:#f2f7ff --text:#000000 --h2:#000000 --h3:#444444 --link:#0066cc --surface:#e5eef8 --border:#c8d4e4
-         cloud:      --bg:#f1f2f0 --text:#35342f --h2:#35342f --h3:#656055 --link:#37bbe4 --surface:#e4e6e2 --border:#c8cac5
-         white:      --bg:#ffffff --text:#222222 --h2:#222222 --h3:#555555 --link:#3366cc --surface:#f5f5f5 --border:#dddddd
-         rp-dawn:    (see dawn theme above)
-         passion:    --bg:#f5f5f5 --text:#12005e --h2:#8e24aa --h3:#6600aa --link:#8e24aa --surface:#eeeeee --border:#d0c8e0
-         cab:        --bg:#f6d305 --text:#1f1f1f --h2:#1f1f1f --h3:#3a3a3a --link:#1f1f1f --surface:#e8cc00 --border:#c0a000
-
-         DARK OPTIONS
-         charcoal:   --bg:#2c3545 --text:#e0e4ec --h2:#d4a843 --h3:#8fa0b8 --link:#9ccfd8 --surface:#1e2535 --border:#3d4f65
-         dark:       --bg:#2d2f38 --text:#e4e6f0 --h2:#e4e6f0 --h3:#8898a8 --link:#68b87e --surface:#22242c --border:#3c3e4a
-         onedark:    --bg:#282c34 --text:#dfd9d6 --h2:#98c379 --h3:#c678dd --link:#61afef --surface:#313640 --border:#3e4450
-         espresso:   --bg:#21211f --text:#d1b59a --h2:#d1b59a --h3:#8a7a6a --link:#c8a070 --surface:#2a2a28 --border:#3e3e3c
-         blackboard: --bg:#1a1a1a --text:#fffdea --h2:#fffdea --h3:#a0a0a0 --link:#88bbdd --surface:#252525 --border:#3a3a3a
-         tron:       --bg:#242b33 --text:#effbff --h2:#6ee2ff --h3:#8ab8c8 --link:#6ee2ff --surface:#2e3840 --border:#3a4850
-         neon:       --bg:#091833 --text:#effbff --h2:#ea00d9 --h3:#a080c0 --link:#ea00d9 --surface:#0e2040 --border:#1a3060
-         mint:       --bg:#282525 --text:#d9d9d9 --h2:#50fbc2 --h3:#8ab8a8 --link:#50fbc2 --surface:#302d2d --border:#3e3a3a
-         chalk:      --bg:#263238 --text:#aabbc3 --h2:#ff869a --h3:#7a9aa8 --link:#ff869a --surface:#2e3e45 --border:#3a4e58
-         lime:       --bg:#263238 --text:#aabbc3 --h2:#aeea00 --h3:#7a9aa8 --link:#aeea00 --surface:#2e3e45 --border:#3a4e58
-         blues:      --bg:#2b2c56 --text:#eff1fc --h2:#6677eb --h3:#9098c8 --link:#6677eb --surface:#353668 --border:#404280
-         pumpkin:    --bg:#2d3436 --text:#effbff --h2:#ffa500 --h3:#9ab0b8 --link:#ffa500 --surface:#383e40 --border:#444e50
-         rp-moon:    (see moon theme above)
+         DARK
+         charcoal: --bg:#2c3545 --text:#e0e4ec --muted:#8fa0b8 --accent:#9ccfd8 --surface:#1e2535
+         flexoki:  --bg:#1a1a18 --text:#cecdc3 --muted:#878580 --accent:#ce5d97 --surface:#272725
+         onedark:  --bg:#282c34 --text:#dfd9d6 --muted:#9098a8 --accent:#61afef --surface:#313640
+         espresso: --bg:#21211f --text:#d1b59a --muted:#8a7a6a --accent:#c8a070 --surface:#2a2a28
+         rp-moon:  (see moon theme above)
          ================================================================ */
     </style>
   </head>
@@ -294,8 +249,8 @@
         {{end}}
       </ul>
       <div class="theme-switcher">
-        <button data-theme="auto" onclick="setTheme('auto')" title="Auto (OS)">
-          ◑
+        <button data-theme="auto" onclick="setTheme('auto')" title="Auto">
+          0
         </button>
         <button data-theme="light" onclick="setTheme('light')" title="Light">
           1
@@ -308,16 +263,6 @@
         </button>
         <button data-theme="dawn" onclick="setTheme('dawn')" title="Dawn">
           4
-        </button>
-        <button data-theme="gray" onclick="setTheme('gray')" title="Gray">
-          5
-        </button>
-        <button
-          data-theme="flexoki"
-          onclick="setTheme('flexoki')"
-          title="Flexoki"
-        >
-          6
         </button>
       </div>
     </nav>
