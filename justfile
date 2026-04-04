@@ -41,7 +41,7 @@ build-linux:
 # deploy to wyse 3040
 deploy: build-linux
 	ssh dwys1.lan 'mkdir -p ~/.local/bin'
-	rsync -avz pingen-linux dwys1.lan:~/.local/bin/pingen
+	rsync -avz pingen-linux wx.lan:~/.local/bin/pingen
 
 # clean build artifacts and generated output
 clean:

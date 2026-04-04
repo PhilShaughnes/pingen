@@ -15,7 +15,7 @@ func convertWikiLinks(content []byte) []byte {
 	return wikiLinkRegex.ReplaceAllFunc(content, func(match []byte) []byte {
 		linkText := string(match[2 : len(match)-2])
 		slug := makeSlug(linkText)
-		return []byte(fmt.Sprintf("[%s](%s.html)", linkText, slug))
+		return fmt.Appendf(nil, "[%s](%s.html)", linkText, slug)
 	})
 }
 
