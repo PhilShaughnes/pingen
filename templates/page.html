@@ -12,30 +12,13 @@
          ================================================================ */
 
       :root,
-      /* light: red */
-      /*
-      [data-theme="light"] {
-        --bg: #faf9f5;
-        --text: #3d3d3a;
-        --muted: #73726c;
-        --accent: #d97857;
-        --surface: #f2e9e1;
-        --bg: #faf4ed;
-        --text: #2e2e2e;
-        --muted: #888888;
-        --accent: #b83232;
-        --surface: #f2e9e1;
-      }
-      /* dark: pink */
       [data-theme="dark"] {
         --bg: #262624;
         --text: #c2c0b6;
         --muted: #9c9a92;
-        /*--accent: #bf6b50;*/
         --accent: #83a598;
         --surface: #30302e;
       }
-      /* light: red */
       [data-theme="light"] {
         --bg: #faf4ed;
         --text: #575279;
@@ -43,65 +26,12 @@
         --accent: #286983;
         --surface: #f2e9e1;
       }
-      /* dark: pink */
-      /*
-      [data-theme="dark"] {
-        --bg: #1a1a18;
-        --text: #cecdc3;
-        --muted: #878580;
-        --accent: #ce5d97;
-        --surface: #272725;
-      }
-      /* moon: rosé pine moon */
-      [data-theme="moon"] {
-        --bg: #232136;
-        --text: #e0def4;
-        --muted: #908caa;
-        --accent: #9ccfd8;
-        --surface: #2a273f;
-      }
-      /* dawn: rosé pine dawn */
-      [data-theme="dawn"] {
-        --bg: #faf4ed;
-        --text: #575279;
-        --muted: #797593;
-        --accent: #286983;
-        --surface: #f2e9e1;
-      }
-      /* gruvbox-light */
-      [data-theme="gruvbox-light"] {
-        --bg: #faf4ed;
-        --text: #3c3836;
-        --muted: #7c6f64;
-        --accent: #458588;
-        --surface: #f2e9e1;
-      }
-      /* gruvbox-dark */
-      [data-theme="gruvbox-dark"] {
-        --bg: #282828;
-        --text: #f2e4c8;
-        --muted: #928374;
-        --accent: #83a598;
-        --surface: #3c3836;
-      }
       /* auto: follows OS preference */
       @media (prefers-color-scheme: light) {
-        [data-theme="auto"] {
-          --bg: #faf4ed;
-          --text: #575279;
-          --muted: #797593;
-          --accent: #286983;
-          --surface: #f2e9e1;
-        }
+        [data-theme="auto"] { --bg: #faf4ed; --text: #575279; --muted: #797593; --accent: #286983; --surface: #f2e9e1; }
       }
       @media (prefers-color-scheme: dark) {
-        [data-theme="auto"] {
-          --bg: #232136;
-          --text: #e0def4;
-          --muted: #908caa;
-          --accent: #9ccfd8;
-          --surface: #2a273f;
-        }
+        [data-theme="auto"] { --bg: #262624; --text: #c2c0b6; --muted: #9c9a92; --accent: #83a598; --surface: #30302e; }
       }
 
       /* --- Base --- */
@@ -117,47 +47,15 @@
         color: var(--text);
         background: var(--bg);
       }
-      h1 {
-        margin-bottom: 1.5rem;
-      }
-      a {
-        color: var(--accent);
-        text-decoration: none;
-      }
-      a:hover {
-        text-decoration: underline;
-      }
-      code {
-        background: var(--surface);
-        padding: 0.2rem 0.4rem;
-        border-radius: 3px;
-        font-size: 0.9em;
-      }
-      pre {
-        background: var(--surface);
-        padding: 1rem;
-        border-radius: 4px;
-        overflow-x: auto;
-      }
-      pre code {
-        padding: 0;
-        background: none;
-      }
-
+      h1 { margin-bottom: 1.5rem; }
+      a { color: var(--accent); text-decoration: none; }
+      a:hover { text-decoration: underline; }
+      code { background: var(--surface); padding: 0.2rem 0.4rem; border-radius: 3px; font-size: 0.9em; }
+      pre { background: var(--surface); padding: 1rem; border-radius: 4px; overflow-x: auto; }
+      pre code { padding: 0; background: none; }
       /* --- Nav --- */
-      nav {
-        margin-bottom: 2rem;
-        padding: 0.5rem 0;
-        border-bottom: 1px solid var(--surface);
-      }
-      nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-      }
+      nav { margin-bottom: 2rem; padding: 0.5rem 0; border-bottom: 1px solid var(--surface); }
+      nav ul { list-style: none; padding: 0; margin: 0; display: flex; flex-wrap: wrap; gap: 1rem; }
 
       /* --- Theme switcher --- */
       .theme-switcher {
@@ -191,14 +89,8 @@
       }
 
       /* --- Sections (bookmark columns) --- */
-      .sections {
-        columns: 240px;
-        column-gap: 2.5rem;
-      }
-      .sections > section {
-        break-inside: avoid;
-        margin-bottom: 1.5rem;
-      }
+      .sections { columns: 240px; column-gap: 2.5rem; }
+      .sections > section { break-inside: avoid; margin-bottom: 1.5rem; }
 
       /* Section label (h2) — small-caps, border-top */
       .sections > section > h2:first-child {
@@ -225,28 +117,12 @@
       }
 
       /* Top-level bookmarks — block links with dot marker */
-      .sections ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-      .sections li > p {
-        font-size: 0.925rem;
-        margin: 0;
-      }
-      .sections > section > ul {
-        padding-left: 1.2rem;
-      }
-      .sections > section > ul > li {
-        list-style-type: disc;
-      }
-      .sections > section > ul > li::marker {
-        color: var(--muted);
-        font-size: 0.65em;
-      }
-      .sections a {
-        color: var(--accent);
-      }
+      .sections ul { list-style: none; padding: 0; margin: 0; }
+      .sections li > p { font-size: 0.925rem; margin: 0; }
+      .sections > section > ul { padding-left: 1.2rem; }
+      .sections > section > ul > li { list-style-type: disc; }
+      .sections > section > ul > li::marker { color: var(--muted); font-size: 0.65em; }
+      .sections a { color: var(--accent); }
 
       /* Nested items — annotation/metadata, not navigation */
       .sections ul ul {
@@ -255,9 +131,7 @@
         color: var(--muted);
         font-size: 0.8rem;
       }
-      .sections ul ul a {
-        color: var(--accent);
-      }
+      .sections ul ul a { color: var(--accent); }
 
       /* ================================================================
          PALETTE LIBRARY — copy into active blocks above.
@@ -302,26 +176,6 @@
         </button>
         <button data-theme="dark" onclick="setTheme('dark')" title="Dark">
           2
-        </button>
-        <button data-theme="moon" onclick="setTheme('moon')" title="Moon">
-          3
-        </button>
-        <button data-theme="dawn" onclick="setTheme('dawn')" title="Dawn">
-          4
-        </button>
-        <button
-          data-theme="gruvbox-light"
-          onclick="setTheme('gruvbox-light')"
-          title="Gruvbox Light"
-        >
-          5
-        </button>
-        <button
-          data-theme="gruvbox-dark"
-          onclick="setTheme('gruvbox-dark')"
-          title="Gruvbox Dark"
-        >
-          6
         </button>
       </div>
     </nav>
