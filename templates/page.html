@@ -11,16 +11,40 @@
          Palette library at bottom
          ================================================================ */
 
-      /* light: red */
       :root,
+      /* light: red */
+      /*
       [data-theme="light"] {
-        --bg: #ebebeb;
+        --bg: #faf9f5;
+        --text: #3d3d3a;
+        --muted: #73726c;
+        --accent: #d97857;
+        --surface: #f2e9e1;
+        --bg: #faf4ed;
         --text: #2e2e2e;
         --muted: #888888;
         --accent: #b83232;
-        --surface: #d8d8d8;
+        --surface: #f2e9e1;
       }
       /* dark: pink */
+      [data-theme="dark"] {
+        --bg: #262624;
+        --text: #c2c0b6;
+        --muted: #9c9a92;
+        /*--accent: #bf6b50;*/
+        --accent: #83a598;
+        --surface: #30302e;
+      }
+      /* light: red */
+      [data-theme="light"] {
+        --bg: #faf4ed;
+        --text: #575279;
+        --muted: #797593;
+        --accent: #286983;
+        --surface: #f2e9e1;
+      }
+      /* dark: pink */
+      /*
       [data-theme="dark"] {
         --bg: #1a1a18;
         --text: #cecdc3;
@@ -44,23 +68,39 @@
         --accent: #286983;
         --surface: #f2e9e1;
       }
+      /* gruvbox-light */
+      [data-theme="gruvbox-light"] {
+        --bg: #faf4ed;
+        --text: #3c3836;
+        --muted: #7c6f64;
+        --accent: #458588;
+        --surface: #f2e9e1;
+      }
+      /* gruvbox-dark */
+      [data-theme="gruvbox-dark"] {
+        --bg: #282828;
+        --text: #f2e4c8;
+        --muted: #928374;
+        --accent: #83a598;
+        --surface: #3c3836;
+      }
       /* auto: follows OS preference */
       @media (prefers-color-scheme: light) {
         [data-theme="auto"] {
-          --bg: #ebebeb;
-          --text: #2e2e2e;
-          --muted: #888888;
-          --accent: #b83232;
-          --surface: #d8d8d8;
+          --bg: #faf4ed;
+          --text: #575279;
+          --muted: #797593;
+          --accent: #286983;
+          --surface: #f2e9e1;
         }
       }
       @media (prefers-color-scheme: dark) {
         [data-theme="auto"] {
-          --bg: #1a1a18;
-          --text: #cecdc3;
-          --muted: #878580;
-          --accent: #ce5d97;
-          --surface: #272725;
+          --bg: #232136;
+          --text: #e0def4;
+          --muted: #908caa;
+          --accent: #9ccfd8;
+          --surface: #2a273f;
         }
       }
 
@@ -235,6 +275,13 @@
          onedark:  --bg:#282c34 --text:#dfd9d6 --muted:#9098a8 --accent:#61afef --surface:#313640
          espresso: --bg:#21211f --text:#d1b59a --muted:#8a7a6a --accent:#c8a070 --surface:#2a2a28
          rp-moon:  (see moon theme above)
+         gruvbox-dark: (see gruvbox-dark theme above)
+
+         gruvbox accents (swap into gruvbox-light/dark):
+           orange: light=#d65d0e dark=#fe8019
+           blue:   light=#458588 dark=#83a598  ← active
+           aqua:   light=#689d6a dark=#8ec07c
+           purple: light=#8f3f71 dark=#d3869b
          ================================================================ */
     </style>
   </head>
@@ -261,6 +308,20 @@
         </button>
         <button data-theme="dawn" onclick="setTheme('dawn')" title="Dawn">
           4
+        </button>
+        <button
+          data-theme="gruvbox-light"
+          onclick="setTheme('gruvbox-light')"
+          title="Gruvbox Light"
+        >
+          5
+        </button>
+        <button
+          data-theme="gruvbox-dark"
+          onclick="setTheme('gruvbox-dark')"
+          title="Gruvbox Dark"
+        >
+          6
         </button>
       </div>
     </nav>
