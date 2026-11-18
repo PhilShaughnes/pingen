@@ -1,4 +1,4 @@
-module github.com/phil/pingen
+module github.com/philshaughnes/pingen
 
 go 1.25.1
 
