@@ -11,10 +11,14 @@ Simple static site generator for markdown-based bookmarks with wiki-style linkin
 - Clean, minimal styling
 - CLI-focused workflow
 
-## Installation
+## Install
 
 ```bash
-go build -o pingen
+# mise (recommended)
+mise use -g github:PhilShaughnes/pingen
+
+# go install
+go install github.com/philshaughnes/pingen@latest
 ```
 
 ## Usage

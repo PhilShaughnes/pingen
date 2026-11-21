@@ -7,12 +7,16 @@ import (
 	"os"
 )
 
+var version = "dev"
+
 func main() {
 	var sourceDir string
 	var outDir string
 	var templatePath string
 	var theme string
+	var showVersion bool
 
+	flag.BoolVar(&showVersion, "version", false, "Print version and exit")
 	flag.StringVar(&sourceDir, "source", "./", "Source directory containing markdown files")
 	flag.StringVar(&sourceDir, "s", "./", "Source directory containing markdown files (shorthand)")
 	flag.StringVar(&outDir, "out", "./public", "Output directory for generated HTML")
@@ -22,6 +26,11 @@ func main() {
 	flag.StringVar(&theme, "theme", "auto", "Color theme: auto, light, dark, moon, dawn")
 	flag.StringVar(&theme, "T", "auto", "Color theme shorthand")
 	flag.Parse()
+
+	if showVersion {
+		fmt.Println(version)
+		return
+	}
 
 	if err := generate(sourceDir, outDir, templatePath, theme); err != nil {
 		log.Fatalf("Error generating site: %v", err)
